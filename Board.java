@@ -7,7 +7,7 @@ public class Board extends JPanel{
   public Board() {
     JFrame frame = new JFrame();
     frame.setSize(600,600);
-    frame.setBackground(Color.BLUE);
+    frame.getContentPane().setBackground(Color.BLUE);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setVisible(true);
   }
