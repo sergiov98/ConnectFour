@@ -1,7 +1,10 @@
+/*
+ * Part of the model
+ */
 import java.awt.*;
 
-public class Piece{
-  public Piece(){
+public class Piece {
+  public Piece() {
 
   }
 }

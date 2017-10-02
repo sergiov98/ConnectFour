@@ -1,3 +1,7 @@
+/*
+ * View of the model
+ * Displays the game state to the user
+ */
 import java.awt.*;
 import javax.swing.*;
 
@@ -10,6 +14,10 @@ public class Board extends JPanel{
     frame.getContentPane().setBackground(Color.BLUE);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setVisible(true);
+  }
+
+  public void display(Model m) {
+
   }
 
 }
