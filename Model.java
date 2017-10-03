@@ -63,51 +63,20 @@ public class Model {
     // horizontally
     inARow = 0;
     for(int c = 0; c < COLS; c++) {
-      if(grid[recentDropR][c] == 1) {
-        if(inARow <= 0) {
-          inARow = 1;
-        } else {
-          inARow++;
-        }
-      } else if(grid[recentDropR][c] == 2) {
-        if(inARow >= 0) {
-          inARow = -1;
-        } else {
-          inARow--;
-        }
-      } else {
-        inARow = 0;
-      }
-      if(inARow == WIN) {
-        return 1;
-      } else if(inARow == -WIN) {
-        return 2;
-      }
+      int x = checkLine(recentDropR, c);
+      if(x != 0) {
+        return x;
+      } 
     }
 
     // vertically 
+    
     inARow = 0;
     for(int r = 0; r < ROWS; r++) {
-      if(grid[r][recentDropC] == 1) {
-        if(inARow <= 0) {
-          inARow = 1;
-        } else {
-          inARow++;
-        }
-      } else if(grid[r][recentDropC] == 2) {
-        if(inARow >= 0) {
-          inARow = -1;
-        } else {
-          inARow--;
-        }
-      } else {
-        inARow = 0;
-      }
-      if(inARow == WIN) {
-        return 1;
-      } else if(inARow == -WIN) {
-        return 2;
-      }
+      int x = checkLine(r, recentDropC);
+      if(x != 0) {
+        return x;
+      } 
     }
 
     // diagonally (bottom-left to top-right)
@@ -119,26 +88,10 @@ public class Model {
       tempC--;
     }
     while(tempR< ROWS && tempC < COLS) {
-      if(grid[tempR][tempC] == 1) {
-        if(inARow <= 0) {
-          inARow = 1;
-        } else {
-          inARow++;
-        }
-      } else if(grid[tempR][tempC] == 2) {
-        if(inARow >= 0) {
-          inARow = -1;
-        } else {
-          inARow--;
-        }
-      } else {
-        inARow = 0;
-      }
-      if(inARow == WIN) {
-        return 1;
-      } else if(inARow == -WIN) {
-        return 2;
-      }
+      int x = checkLine(tempR, tempC);
+      if(x != 0) {
+        return x;
+      } 
       tempR++;
       tempC++;
     }
@@ -152,26 +105,10 @@ public class Model {
       tempC--;
     }
     while(tempR >= 0 && tempC < COLS) {
-      if(grid[tempR][tempC] == 1) {
-        if(inARow <= 0) {
-          inARow = 1;
-        } else {
-          inARow++;
-        }
-      } else if(grid[tempR][tempC] == 2) {
-        if(inARow >= 0) {
-          inARow = -1;
-        } else {
-          inARow--;
-        }
-      } else {
-        inARow = 0;
-      }
-      if(inARow == WIN) {
-        return 1;
-      } else if(inARow == -WIN) {
-        return 2;
-      }
+      int x = checkLine(tempR, tempC);
+      if(x != 0) {
+        return x;
+      } 
       tempR--;
       tempC++;
     }
@@ -185,6 +122,36 @@ public class Model {
       }
     }
     return 3; // board is filled, draw game
+  }
+
+  /**
+   * Helper method for checking for wins
+   * @param r
+   * @param c
+   * @return 0 if no win, 1 or 2 if p1 or p2 has won
+   */
+  private int checkLine(int r, int c) {
+      if(grid[r][c] == 1) {
+        if(inARow <= 0) {
+          inARow = 1;
+        } else {
+          inARow++;
+        }
+      } else if(grid[r][c] == 2) {
+        if(inARow >= 0) {
+          inARow = -1;
+        } else {
+          inARow--;
+        }
+      } else {
+        inARow = 0;
+      }
+      if(inARow == WIN) {
+        return 1;
+      } else if(inARow == -WIN) {
+        return 2;
+      }
+      return 0;
   }
 
   /**
