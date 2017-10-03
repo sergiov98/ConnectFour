@@ -65,18 +65,17 @@ public class Model {
     for(int c = 0; c < COLS; c++) {
       int x = checkLine(recentDropR, c);
       if(x != 0) {
-        return x;
-      } 
+        return x; 
+      }
     }
 
     // vertically 
-    
     inARow = 0;
     for(int r = 0; r < ROWS; r++) {
       int x = checkLine(r, recentDropC);
-      if(x != 0) {
+      if(x != 0) { 
         return x;
-      } 
+      }
     }
 
     // diagonally (bottom-left to top-right)
@@ -91,7 +90,7 @@ public class Model {
       int x = checkLine(tempR, tempC);
       if(x != 0) {
         return x;
-      } 
+      }
       tempR++;
       tempC++;
     }
@@ -108,7 +107,7 @@ public class Model {
       int x = checkLine(tempR, tempC);
       if(x != 0) {
         return x;
-      } 
+      }
       tempR--;
       tempC++;
     }
@@ -126,8 +125,8 @@ public class Model {
 
   /**
    * Helper method for checking for wins
-   * @param r
-   * @param c
+   * @param r Row of piece to check
+   * @param c Column of piece to check
    * @return 0 if no win, 1 or 2 if p1 or p2 has won
    */
   private int checkLine(int r, int c) {
